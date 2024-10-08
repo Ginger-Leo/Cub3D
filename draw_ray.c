@@ -6,7 +6,7 @@
 /*   By: lstorey <lstorey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 16:40:26 by mmeier            #+#    #+#             */
-/*   Updated: 2024/10/07 12:18:40 by lstorey          ###   ########.fr       */
+/*   Updated: 2024/10/07 13:01:44 by lstorey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void draw_line(t_data *data)
 		if (x < 0 || y < 0 || data->map[y][x] == '1')
 			break;
 		mlx_put_pixel(data->img->ray, x * PX, y * PX, 0xFF0000FF);
-		mlx_image_to_window(data->mlx, data->img->ray, x, y);
+		if (mlx_image_to_window(data->mlx, data->img->ray, y, x) == -1)
+			printf("must handle error\n");
 	}
 }
 
